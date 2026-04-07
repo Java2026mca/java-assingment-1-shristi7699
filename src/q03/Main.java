@@ -5,16 +5,31 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        // TODO: Fill an N×N matrix in clockwise spiral order starting from 1
-        //       Print each row with values separated by single space
-        //       Then print: "Diagonal: X" where X = sum of primary diagonal (top-left to bottom-right)
-        //
-        // Input: 3
-        // Output:
-        // 1 2 3
-        // 8 9 4
-        // 7 6 5
-        // Diagonal: 15
+        int[][] m = new int[n][n];
+        int top = 0, bottom = n-1, left = 0, right = n-1, num = 1;
 
+        while (num <= n * n) {
+            for (int i = left; i <= right; i++)  m[top][i]    = num++;
+            top++;
+            for (int i = top; i <= bottom; i++)  m[i][right]  = num++;
+            right--;
+            for (int i = right; i >= left; i--)  m[bottom][i] = num++;
+            bottom--;
+            for (int i = bottom; i >= top; i--)  m[i][left]   = num++;
+            left++;
+        }
+
+        for (int i = 0; i < n; i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < n; j++) {
+                if (j > 0) sb.append(" ");
+                sb.append(m[i][j]);
+            }
+            System.out.println(sb);
+        }
+
+        int diag = 0;
+        for (int i = 0; i < n; i++) diag += m[i][i];
+        System.out.println("Diagonal: " + diag);
     }
 }
