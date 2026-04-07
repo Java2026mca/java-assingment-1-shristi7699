@@ -10,18 +10,18 @@ public class Main {
 
         int swaps = 0;
 
-        // Insertion Sort (count shifts)
+        // Insertion Sort using swaps (NOT shifts)
         for (int i = 1; i < n; i++) {
-            int key = arr[i];
-            int j = i - 1;
+            int j = i;
 
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j]; // shift
-                swaps++;             // count shift
+            while (j > 0 && arr[j] < arr[j - 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
+
+                swaps++;
                 j--;
             }
-
-            arr[j + 1] = key;
         }
 
         StringBuilder sb = new StringBuilder();
