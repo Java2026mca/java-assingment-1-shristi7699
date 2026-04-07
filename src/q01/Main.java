@@ -5,41 +5,29 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        // Upper half (including middle line)
+        // Top half
         for (int i = 1; i <= n; i++) {
-            // Print leading spaces
-            for (int j = 1; j <= n - i; j++) {
-                System.out.print(" ");
+            for (int s = 0; s < n - i; s++) System.out.print(" ");
+            if (i == 1) {
+                System.out.print("*");
+            } else {
+                System.out.print("*");
+                for (int s = 0; s < 2 * i - 3; s++) System.out.print(" ");
+                System.out.print("*");
             }
-
-            // Print stars and inner spaces
-            for (int j = 1; j <= 2 * i - 1; j++) {
-                if (j == 1 || j == 2 * i - 1) {
-                    System.out.print("*");
-                } else {
-                    System.out.print(" ");
-                }
-            }
-
             System.out.println();
         }
 
-        // Lower half
+        // Bottom half
         for (int i = n - 1; i >= 1; i--) {
-            // Print leading spaces
-            for (int j = 1; j <= n - i; j++) {
-                System.out.print(" ");
+            for (int s = 0; s < n - i; s++) System.out.print(" ");
+            if (i == 1) {
+                System.out.print("*");
+            } else {
+                System.out.print("*");
+                for (int s = 0; s < 2 * i - 3; s++) System.out.print(" ");
+                System.out.print("*");
             }
-
-            // Print stars and inner spaces
-            for (int j = 1; j <= 2 * i - 1; j++) {
-                if (j == 1 || j == 2 * i - 1) {
-                    System.out.print("*");
-                } else {
-                    System.out.print(" ");
-                }
-            }
-
             System.out.println();
         }
     }
