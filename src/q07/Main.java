@@ -12,27 +12,19 @@ public class Main {
 
         int swaps = 0;
 
-        // Optimized Bubble Sort
-        for (int i = 0; i < n - 1; i++) {
-            boolean swapped = false;
-
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // swap
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-
+        // Count inversions
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] > arr[j]) {
                     swaps++;
-                    swapped = true;
                 }
             }
-
-            // Optimization: stop if already sorted
-            if (!swapped) break;
         }
 
-        // Print array
+        // Sort array
+        Arrays.sort(arr);
+
+        // Print sorted array
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             if (i > 0) sb.append(" ");
